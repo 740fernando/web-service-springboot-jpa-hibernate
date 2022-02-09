@@ -1,4 +1,4 @@
-package com.workshop.service.entities;
+package com.web.service.entities;
 
 import java.io.Serializable;
 import java.util.Objects;

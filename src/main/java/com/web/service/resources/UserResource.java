@@ -1,11 +1,11 @@
-package com.workshop.service.resources;
+package com.web.service.resources;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.workshop.service.entities.User;
+import com.web.service.entities.User;
 
 /**
  * 
