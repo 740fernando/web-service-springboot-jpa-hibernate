@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.web.service.entities.enums.OrderStatus;
 
 /**
  * lazy loading - Quando é uma associação 'para muitos', o jpa não carrega o objeto para muitos, porque ? para não estorar a memória e o tráfego do seu computador
@@ -29,7 +30,9 @@ public class Order implements Serializable {
 	private Long id;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone="GMT")
-	private Instant momento;
+	private Instant moment;
+	
+	private Integer orderStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
@@ -40,10 +43,11 @@ public class Order implements Serializable {
 		
 	}
 
-	public Order(Long id, Instant momento, User client) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 		super();
 		this.id = id;
-		this.momento = momento;
+		this.moment = moment;
+		setOrderStatus(orderStatus);
 		this.client = client;
 	}
 
@@ -55,16 +59,26 @@ public class Order implements Serializable {
 		this.id = id;
 	}
 
-	public Instant getMomento() {
-		return momento;
+	public Instant getmoment() {
+		return moment;
 	}
 
-	public void setMomento(Instant momento) {
-		this.momento = momento;
+	public void setmoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public User getClient() {
 		return client;
+	}
+	
+	public OrderStatus getOrderStatus() {
+		return OrderStatus.valueOf(orderStatus);
+	}
+
+	public void setOrderStatus(OrderStatus orderStatus) {
+		if(orderStatus != null) {
+			this.orderStatus = orderStatus.getCode();			
+		}
 	}
 
 	public void setClient(User client) {
@@ -73,7 +87,7 @@ public class Order implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(client, id, momento);
+		return Objects.hash(client, id, moment);
 	}
 
 	@Override
@@ -86,7 +100,7 @@ public class Order implements Serializable {
 			return false;
 		Order other = (Order) obj;
 		return Objects.equals(client, other.client) && Objects.equals(id, other.id)
-				&& Objects.equals(momento, other.momento);
+				&& Objects.equals(moment, other.moment);
 	}
 	
 }
