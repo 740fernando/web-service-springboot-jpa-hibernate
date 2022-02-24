@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.web.service.model.dao.repositories.CategoryRepository;
+import com.web.service.model.dao.repositories.OrderItemRepository;
 import com.web.service.model.dao.repositories.OrderRepository;
 import com.web.service.model.dao.repositories.ProductRepository;
 import com.web.service.model.dao.repositories.UserRepository;
 import com.web.service.model.entities.Category;
 import com.web.service.model.entities.Order;
+import com.web.service.model.entities.OrderItem;
 import com.web.service.model.entities.Product;
 import com.web.service.model.entities.User;
 import com.web.service.model.entities.enums.OrderStatus;
@@ -45,6 +47,9 @@ public class TesteConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private OrderItemRepository orderItemRepository;
 
 	// Tudo que for colocado dentro desse método, vai ser iniciado na execução da
 	// aplicação
@@ -84,6 +89,12 @@ public class TesteConfig implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(u1,u2));
 		orderRepository.saveAll(Arrays.asList(o1,o2,o3));
-
+		
+		OrderItem oi1 = new OrderItem(o1,p1,2,p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1,p3,1,p4.getPrice());
+		OrderItem oi3 = new OrderItem(o2,p3,2,p1.getPrice());
+		OrderItem oi4 = new OrderItem(o3,p5,2,p5.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(oi1,oi2,oi3,oi4));
 	}
 }
