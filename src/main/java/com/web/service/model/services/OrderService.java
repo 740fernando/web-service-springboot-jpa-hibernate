@@ -1,4 +1,4 @@
-package com.web.service.services;
+package com.web.service.model.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.web.service.entities.Order;
-import com.web.service.repositories.OrderRepository;
+import com.web.service.model.dao.repositories.OrderRepository;
+import com.web.service.model.entities.Order;
 
 
 

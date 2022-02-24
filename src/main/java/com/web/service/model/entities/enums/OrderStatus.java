@@ -1,4 +1,4 @@
-package com.web.service.entities.enums;
+package com.web.service.model.entities.enums;
 
 public enum OrderStatus {
 

@@ -1,4 +1,4 @@
-package com.web.service.resources;
+package com.web.service.controller.resources;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.service.entities.Order;
-import com.web.service.services.OrderService;
+import com.web.service.model.entities.Order;
+import com.web.service.model.services.OrderService;
 
 
 

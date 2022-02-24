@@ -1,4 +1,4 @@
-package com.web.service.entities;
+package com.web.service.model.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;

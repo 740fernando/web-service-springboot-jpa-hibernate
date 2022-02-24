@@ -1,8 +1,8 @@
-package com.web.service.repositories;
+package com.web.service.model.dao.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.web.service.entities.User;
+import com.web.service.model.entities.Product;
 /**
  * 
  * A classe UserRepository não é necessário de annotation(Repository) pois está herdando da interface JpaRepository, que já possui a annotation implementada.
@@ -10,7 +10,7 @@ import com.web.service.entities.User;
  * @author fsouviei
  *
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 
 }
