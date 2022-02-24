@@ -1,4 +1,4 @@
-package com.web.service.entities;
+package com.web.service.model.entities;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.web.service.entities.enums.OrderStatus;
+import com.web.service.model.entities.enums.OrderStatus;
 
 /**
  * lazy loading - Quando é uma associação 'para muitos', o jpa não carrega o objeto para muitos, porque ? para não estorar a memória e o tráfego do seu computador
