@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -20,6 +22,8 @@ import com.web.service.model.entities.enums.OrderStatus;
 
 /**
  * lazy loading - Quando é uma associação 'para muitos', o jpa não carrega o objeto para muitos, porque ? para não estorar a memória e o tráfego do seu computador
+ * cascade = CascadeType.ALL -> Mapeando as duas identidades para ter o mesmo id, se order tiver id 5
+ * o payment tbm vai ter id 5, e neste caso de mapear uma relação um para um de mesmo id, é obrigatorio colocar "cascade = CascadeType.ALL".
  */
 
 @Entity
@@ -44,6 +48,9 @@ public class Order implements Serializable {
 	
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
+	
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	private Payment payment;
 
 	public Order() {
 		
@@ -69,7 +76,7 @@ public class Order implements Serializable {
 		return moment;
 	}
 
-	public void setmoment(Instant moment) {
+	public void setMoment(Instant moment) {
 		this.moment = moment;
 	}
 
@@ -91,6 +98,14 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 	
+	public Payment getPayment() {
+		return payment;
+	}
+
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
+
 	public Set<OrderItem> getItems(){
 		return items;
 	}
