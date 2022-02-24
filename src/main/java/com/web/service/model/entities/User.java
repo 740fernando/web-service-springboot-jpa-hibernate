@@ -14,16 +14,16 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+/**
+ * Serializable -Essa interface é definida para que seja possível transformar o objeto em cadeia de bytes
+ * É importante converter o objeto em cadeia de bytes para seguintes finalidades:
+ * - Tráfego na rede;
+ * - Gravado em arquivos
+ */
+
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable{
-	
-	/**
-	 * Serializable -Essa interface é definida para que seja possível transformar o objeto em cadeia de bytes
-	 * É importante converter o objeto em cadeia de bytes para seguintes finalidades:
-	 * - Tráfego na rede;
-	 * - Gravado em arquivos
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
